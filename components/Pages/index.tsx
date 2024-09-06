@@ -33,12 +33,12 @@ const Page: PageEl = (props, state:
         state.cart = []
         }
 
-    for(let titlr of state.cart)
+    for(let title of state.cart)
     {
-       let book=props.books.find(b=> b.title == title)
+       let book=props.books.find( b => b.title == title)
        if(book)
        {
-        total_price += (book.price*0.8)
+        total_price += (book.price *0.8)
        } 
     }
 
@@ -90,7 +90,7 @@ const Page: PageEl = (props, state:
                 <g-b style={{
                     backgroundColor:
                         state.cart.includes(state.book.title) ?
-                            "green " : "red"
+                            "red" : "green"
                 }}
                     onClick={() => {
 
@@ -119,10 +119,10 @@ const Page: PageEl = (props, state:
 
 
             <Window title="سبد خرید" style={{margin: 10, width: "calc(100% - 20px)", height:60}}>
-                <f-cse style={{width: "100%", height:60 }}>
+                <f-cse style={{width: "100%", height:30 }}>
 
-                    <f-14> مجموع قابل پرداخت:{total_price.toLocaleString("fa-IR")}</f-14>
-                    <f-14> تعداد کتاب ها: { state.cart.length.toLocaleString("fa-IRs")} </f-14>
+                    <f-14> مجموع قابل پرداخت:{total_price.toLocaleString("fa-IR")}تومان</f-14>
+                    <f-14> تعداد کتاب ها: { state.cart.length.toLocaleString("fa-IR")} عدد</f-14>
 
                 </f-cse>
             </Window>
@@ -159,7 +159,7 @@ export async function getServerSideProps(context) {
     let books = await global.db.collection("books").find({}).toArray()
 
     for (let book of books) {
-        book.imageLink = "https://irmapserver.ir/research/ex/books/" + book.imageLink
+        book.imageLink = "https://cdn.turing.team/research/ex/books/" + book.imageLink
     }
 
     console.log(books)

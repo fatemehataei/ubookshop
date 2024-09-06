@@ -7,7 +7,7 @@ export const Block = props => {
         props.state.cart = []
     }
     
-    let size = props.state.cart.include(props.book.title)?20:25
+    let size = props.state.cart.includes(props.book.title)?20:25
 
     return <c-c style={{
         width: 150, flex: 1, minWidth: 150,
@@ -39,9 +39,9 @@ export const Block = props => {
         <hr style={{width:"80%", opacity:0.2}}/>
         <f-csb style={{ width: "100%", padding: "5px 0" }}>
 
-            <img src={ props.state.cart.include(props.book.title)?
-            "https://irmapserver.ir/qepal/ok.svg":
-            "https://irmapserver.ir/qepal/cart.svg"} 
+            <img src={ props.state.cart.includes(props.book.title)?
+            "https://cdn.turing.team/qepal/ok.svg":
+            "https://cdn.turing.team/qepal/cart.svg"} 
             style={{height:25, width:25, objectFit:"contain",
                 margin:"0 10px"
             }}/>
